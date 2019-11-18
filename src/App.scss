@@ -1,0 +1,84 @@
+
+@keyframes fadeup{
+  0%{
+    margin-top:50px;
+    opacity:0;
+  }
+  100%{
+    margin-top:0px;
+    opacity:1;
+  }
+}
+
+@keyframes slide-out-right{
+  0%{
+    width:0%;
+  }
+  100%{
+    width:40%;
+  }
+}
+
+@keyframes fadein{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+h1{
+  font-weight: 700;
+  text-align:center;
+  font-size:45px;
+  opacity:0;
+  animation-name: fadeup;
+  animation-duration:0.75s;
+  animation-fill-mode: forwards;
+  margin-top:50px;
+  animation-delay: 0.25s;
+}
+
+
+
+.task-container{
+  color:white;
+  border-radius:15px;
+  background:linear-gradient(to right,#b0ffe2,#7bffcf);
+  width:0%;
+  margin:0 auto;
+  margin-top:50px;
+  animation-name: slide-out-right;
+  animation-delay: 1s;
+  animation-duration:1s;
+  animation-fill-mode: forwards;
+  text-align:center;
+  padding-top:15px;
+  padding-bottom:15px;
+  span{
+    font-size:30px;
+    opacity:0;
+    animation-name: fadein;
+    animation-duration:0.75s;
+    animation-fill-mode: forwards;
+    animation-delay:2s;
+  }
+  h2{
+    line-height:0px;
+    font-size:40px;
+    opacity:0;
+    animation-name: fadein;
+    animation-duration:0.75s;
+    animation-fill-mode: forwards;
+    animation-delay:2s;
+  }
+}
+
+.pillar-master{
+  width:80%;
+  margin:80px auto 0px auto;
+}
