@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
 import Greeting from './components/Greeting/Greeting';
-import TodaysTask from './components/TodaysTask/TodaysTask';
 import Pillar from './components/Pillar/Pillar';
-import Orm from './components/Orm/Orm';
-import Weight from './components/Weight/Weight';
+import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      route:'home',
+      route:'signin',
       name:'Dave',
       time:'',
-      task:'Endurance x 30 minutes'
+      task:'Endurance x 30 minutes',
+      isGuest:'no'
     }
   }
 
@@ -22,14 +22,24 @@ class App extends Component {
       this.setState({route:route});
     }
 
+    areTheyAGuest = (guest) => {
+      this.setState({route:'home'});
+      this.setState({guest:guest});
+    }
+
   render(){
     return (
       <div className="App">
           <Header/>
-          {this.state.route === 'home' ?
+          {this.state.route === 'signin'
+            ?
+            <Signin onRouteChange={this.onRouteChange} areTheyAGuest={this.areTheyAGuest}/>
+            :(
+            this.state.route === 'register'?
+            <Register onRouteChange={this.onRouteChange}/>
+            :(this.state.route === 'home' ?
             <div>
               <Greeting name = {this.state.name}/>
-              <TodaysTask task = {this.state.task}/>
               <div className='pillar-master'>
                 <Pillar title = {'Strength/Conditioning'} delay={'3.25s'} onRouteChange={this.onRouteChange}/>
                 <Pillar title = {'Mobility'} delay={'3.75s'} onRouteChange={this.onRouteChange}/>
@@ -43,17 +53,9 @@ class App extends Component {
               <h2>Strength</h2>
               <div className='orm-container'>
                 <h3>Your Current One Rep Max In:</h3>
-                <Orm exercise={'Benchpress'} weight={'200 Pounds'}/>
-                <Orm exercise={'Pullups'} weight={'5 reps'}/>
-                <Orm exercise={'Squats'} weight={'200 pounds'}/>
-                <Orm exercise={'Deadlifts'} weight={'200 pounds'}/>
               </div>
               <div className='weight-container'>
                 <h3>Weights, Sets, and Reps For Your Next Workout</h3>
-                <Weight exercise={'Benchpress'} weight={'200 Pounds'}/>
-                <Weight exercise={'Pullups'} weight={'5 reps'}/>
-                <Weight exercise={'Squats'} weight={'200 pounds'}/>
-                <Weight exercise={'Deadlifts'} weight={'200 pounds'}/>
               </div>
               
             </div>
@@ -73,7 +75,7 @@ class App extends Component {
             )
             )
             
-          )}
+          )))}
           
       </div>
     );

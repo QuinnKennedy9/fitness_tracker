@@ -1,0 +1,52 @@
+span:hover{
+cursor: pointer;
+}
+
+.form-styles{
+    border-radius:15px;
+    width:35%;
+    margin:0 auto;
+    padding:30px 60px;
+    background:linear-gradient(to right,#b0ffe2,#7bffcf);
+    color:white;
+    text-align:center;
+    p{
+        font-size:25px;
+        line-height:10px;
+    }
+    span{
+        font-size:25px;
+        line-height:10px;
+    }
+
+    input{
+        width:100%;
+        border:none;
+        background-color:transparent;
+        padding:20px 10px 5px 10px;
+        margin:30px 0px;
+        border-bottom:3px solid white;
+        font-size:30px;
+    }
+
+    .submit{
+        width:30%;
+        margin:10px auto;
+        font-size:20px;
+        padding:10px;
+        border:3px solid white;
+        background-color:white;
+        border-radius:10px;
+    }
+
+    .submit:hover{
+        cursor: pointer;
+    }
+
+    input::placeholder{
+        color:white;
+        font-size:30px;
+    }
+
+
+}
