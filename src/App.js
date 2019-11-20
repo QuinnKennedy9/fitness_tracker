@@ -27,13 +27,17 @@ class App extends Component {
       this.setState({guest:guest});
     }
 
+    updateName = (name) =>{
+      this.setState({name:name});
+    }
+
   render(){
     return (
       <div className="App">
           <Header/>
           {this.state.route === 'signin'
             ?
-            <Signin onRouteChange={this.onRouteChange} areTheyAGuest={this.areTheyAGuest}/>
+            <Signin onRouteChange={this.onRouteChange} areTheyAGuest={this.areTheyAGuest} updateName={this.updateName}/>
             :(
             this.state.route === 'register'?
             <Register onRouteChange={this.onRouteChange}/>

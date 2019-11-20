@@ -7,7 +7,8 @@ class Register extends Component {
         this.state = {
             email:'',
             name:'',
-            password:''
+            password:'',
+            status:''
         }
     }
 
@@ -25,6 +26,28 @@ class Register extends Component {
 
     registerUser = (event) =>{
         event.preventDefault();
+        const url = 'http://localhost:8888/fitness_tracker/admin/phpscripts/user.php';
+        const user = {
+            email: this.state.email,
+            name: this.state.name,
+            password: this.state.password
+        };
+        const request = new Request(url, {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(() => { 
+                this.setState({status:'successful'})
+                console.log(this.state.status);
+            })
+            .catch(function(error) {
+            console.log(error);
+            this.setState({status:'failure'});
+        });
         //this.props.onRouteChange('signin');
         
     }
